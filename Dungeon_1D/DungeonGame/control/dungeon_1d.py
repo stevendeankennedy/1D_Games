@@ -1,6 +1,4 @@
-
-
-class Dungeon1D:
+class Dungeon1D(object):
     def update(self, delta):
         if self.game_over:
             return
@@ -15,8 +13,8 @@ class Dungeon1D:
         if not self.map.add(o, self.player_pos):
             self.game_over = True
 
-    def draw(self):
-        print(self.map.as_string())
+    # def draw(self):
+    #     print(self.map.as_string())
 
     def collision(self, obj1, obj2):
         print("{} fights {}".format(obj1.name, obj2.name))

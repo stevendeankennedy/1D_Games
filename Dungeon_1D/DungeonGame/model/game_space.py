@@ -1,11 +1,15 @@
-class GameSpace:
-    'The 1D Game World.  It is made up of an array.'
+class GameSpace(object):
+    """
+    The 1D Game World.  It is made up of an array.
 
-    # world - array for world
-    # size = size of world
+        world - array for world
+        size = size of world
+        rooms: size of rooms, in order
 
-    def __init__(self, size):
+    """
+    def __init__(self, size, rooms):
         self.world = [None] * size
+        self.rooms = rooms
 
     def add(self, entity, index):
         if index >= len(self.world):
@@ -27,11 +31,4 @@ class GameSpace:
         self.world[index] = None
         return o
 
-    def as_string(self):
-        line = ''
-        for i in range(len(self.world)):
-            if self.world[i] is None:
-                line += '[-]'
-            else:
-                line += "[" + self.world[i].name + ']'
-        return line
+
