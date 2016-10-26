@@ -1,8 +1,8 @@
 import time
 
-from control.dungeon_1d import Dungeon1D
-from model.game_entity import GameEntity
-from model.game_space import GameSpace
+from DungeonGame.control.dungeon_1d import Dungeon1D
+from DungeonGame.model.game_space import GameSpace
+from DungeonGame.model.game_entity import GameEntity
 
 from DungeonGame.view.renderer_1d import *
 
