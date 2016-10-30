@@ -11,6 +11,7 @@ class Renderer1D(object):
         """Render output."""
         pass
 
+
 class TextRenderer(Renderer1D):
     """
         Text version.
@@ -34,7 +35,7 @@ class TextRenderer(Renderer1D):
             for i in range(len(spaces)):
                 if spaces[i] is None:
                     line += space
-                else: # something here
+                else:  # something is here
                     line += spaces[i].name
                 i += 1
         line += '|'  # end of room

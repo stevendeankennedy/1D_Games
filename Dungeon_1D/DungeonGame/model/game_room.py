@@ -17,5 +17,19 @@ class GameRoom:
     def add_entity(self, entity):
         if self.spaces[0] is None:
             self.spaces[0] = entity
+            return True
+        else:
+            return False
+
+    def add_obstacle(self, entity):
+        """
+        Puts something at the back of the room.
+        :param entity: Thing to put in
+        :return: Whether add was successful
+        """
+        pos = len(self.spaces) - 2
+        if self.spaces[pos] is None:
+            self.spaces[pos] = entity
+            return True
         else:
             return False

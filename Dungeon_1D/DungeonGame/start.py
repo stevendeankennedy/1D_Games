@@ -18,11 +18,15 @@ def main():
     obj2 = GameEntity("O", 10, 10, 10, 10, 10, 10)
     obj2.print_stats()
 
+    spawn_room = GameRoom(3, "overworld")
+    spawn_room.add_entity(obj1)
+    boss_room = GameRoom(5, "cave")
+    boss_room.add_obstacle(obj2)
+
     # test world
-    rooms = [GameRoom(5, "overworld"), GameRoom(3, "cave"), GameRoom(8, "lava"), GameRoom(5, "overworld"), GameRoom(3, "cave")]
+    rooms = [spawn_room, GameRoom(5, "overworld"), GameRoom(3, "cave"), GameRoom(8, "lava"),\
+             boss_room, GameRoom(3, "overworld")]
     world = GameSpace(rooms)
-    world.add(obj1, 0)
-    world.add(obj2, 2)
 
     dungeon_1d = Dungeon1D(world)
     renderer_1d = TextRenderer(world)
