@@ -8,7 +8,7 @@ class Renderer1D(object):
         self.world = game_space
 
     def draw(self):
-        """Doesn't do anything."""
+        """Render output."""
         pass
 
 class TextRenderer(Renderer1D):
@@ -16,20 +16,21 @@ class TextRenderer(Renderer1D):
         Text version.
     """
 
+    space_text = {  # spaces defines how text output looks
+        "overworld": '-',
+        "cave": '_',
+        "lava": '~'
+    }
+
     def draw(self):
         line = ''  # The line that will be printed
-        space_text = {  # spaces defines how text output looks
-            "overworld": '-',
-            "cave": '_',
-            "lava": '~'
-        }
+
         rooms = self.world.rooms
         for r in rooms:
             line += '|'  # room output beginning wall
-            space = space_text[r.type]  # what to draw
+            space = self.space_text[r.type]  # what to draw
             spaces = r.spaces
-            # if space is None:
-            #     space = ' '
+
             for i in range(len(spaces)):
                 if spaces[i] is None:
                     line += space
