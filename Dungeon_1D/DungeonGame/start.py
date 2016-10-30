@@ -2,11 +2,12 @@ import time
 
 from DungeonGame.control.dungeon_1d import Dungeon1D
 from DungeonGame.model.game_space import GameSpace
+from DungeonGame.model.game_room import GameRoom
 from DungeonGame.model.game_entity import GameEntity
 
 from DungeonGame.view.renderer_1d import *
 
-LEDs = 20
+# LEDs = 20
 
 
 def main():
@@ -18,11 +19,10 @@ def main():
     obj2.print_stats()
 
     # test world
-    rooms = [5, 3, 8]
-    print(rooms)
-    world = GameSpace(LEDs, rooms)
+    rooms = [GameRoom(5, "overworld"), GameRoom(3, "cave"), GameRoom(8, "lava"), GameRoom(5, "overworld"), GameRoom(3, "cave")]
+    world = GameSpace(rooms)
     world.add(obj1, 0)
-    world.add(obj2, 12)
+    world.add(obj2, 2)
 
     dungeon_1d = Dungeon1D(world)
     renderer_1d = TextRenderer(world)

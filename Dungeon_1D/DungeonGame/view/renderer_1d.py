@@ -1,5 +1,3 @@
-from DungeonGame.model import game_space
-
 class Renderer1D(object):
     """
         Basic 1D Renderer.
@@ -19,28 +17,24 @@ class TextRenderer(Renderer1D):
     """
 
     def draw(self):
-        # game_world = self.world.as_string()
-        # print(game_world)
-        i = 0 # index
-        line = ''
-        # game_world = self.world.get_array()
-        game_world = self.world.world
+        line = ''  # The line that will be printed
+        space_text = {  # spaces defines how text output looks
+            "overworld": '-',
+            "cave": '_',
+            "lava": '~'
+        }
         rooms = self.world.rooms
         for r in rooms:
-            line += '['
-            while r > 0:
-                r -= 1
-                if game_world[i] is None:
-                    line += '-'
+            line += '|'  # room output beginning wall
+            space = space_text[r.type]  # what to draw
+            spaces = r.spaces
+            # if space is None:
+            #     space = ' '
+            for i in range(len(spaces)):
+                if spaces[i] is None:
+                    line += space
                 else: # something here
-                    line += game_world[i].name
+                    line += spaces[i].name
                 i += 1
-            line += ']'  # end of room
-        line += '['  # final space... undefined room
-        for j in range(i, len(game_world)):
-            if game_world[j] is None:
-                line += '-'
-            else:  # something here
-                line += game_world[j].name
-        line += ']'  # end undefined room
+        line += '|'  # end of room
         print(line)

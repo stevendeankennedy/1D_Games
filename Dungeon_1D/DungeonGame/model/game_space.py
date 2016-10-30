@@ -7,28 +7,13 @@ class GameSpace(object):
         rooms: size of rooms, in order
 
     """
-    def __init__(self, size, rooms):
-        self.world = [None] * size
+
+    def __init__(self, rooms):
         self.rooms = rooms
+        # Set up exit pointers
+        for i in range(len(self.rooms) - 1):  # last room's pointer stays None
+            self.rooms[i].next = i + 1
 
-    def add(self, entity, index):
-        if index >= len(self.world):
-            print("Can't add {}.  Index {} out of bounds".format(entity.name, index))
-            return False
-        # add entity to world
-        old = self.world[index]
-        self.world[index] = entity
-
-        return True
-
-    def peek(self, index):
-        if index < 0 or index >= len(self.world):
-            return None
-        return self.world[index]
-
-    def remove(self, index):
-        o = self.world[index]
-        self.world[index] = None
-        return o
-
-
+    def add(self, entity, room):
+        success = self.rooms[room].add_entity(entity)
+        return success
