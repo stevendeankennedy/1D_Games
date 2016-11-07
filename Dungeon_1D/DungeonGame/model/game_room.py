@@ -33,3 +33,8 @@ class GameRoom:
             return True
         else:
             return False
+
+    def update(self, dt):
+        for e in self.spaces:
+            if e is not None:
+                e.update(dt)

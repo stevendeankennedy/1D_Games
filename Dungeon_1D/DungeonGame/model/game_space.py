@@ -17,3 +17,7 @@ class GameSpace(object):
     def add(self, entity, room):
         success = self.rooms[room].add_entity(entity)
         return success
+
+    def update(self, dt):
+        for room in self.rooms:
+            room.update(dt)

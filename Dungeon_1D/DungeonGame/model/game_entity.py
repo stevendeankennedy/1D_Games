@@ -24,3 +24,6 @@ class GameEntity(object):
         stats = "!{:<10s}-----\n ATK:{:>8}\n DEF:{:>8}\n SPA:{:>8}\n SPD:{:>8}\n SPEED:{:>6}\n HP:{:>9}"\
             .format(self.name, self.attack, self.defense, self.sp_atk, self.sp_def, self.speed, self.maxhp)
         print(stats)
+
+    def update(self, dt):
+        print("Update {}".format(self.name))
