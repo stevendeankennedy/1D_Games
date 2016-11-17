@@ -37,6 +37,7 @@ class TextRenderer(Renderer1D):
                     line += space
                 else:  # something is here
                     line += spaces[i].name
+                    # line += str(i)  # check index
                 i += 1
         line += '|'  # end of room
         print(line)
